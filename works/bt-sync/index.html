@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600,300,400,700&subset=latin,cyrillic,latin-ext" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="index.css">
+		<title>bittorrent</title>
+		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+		<script>
+			$(function () {
+				var FIXED_NAV_CLASS = 'fixed';
+				// Переменная, куда будет записана ссылка на узел навигации
+				var bodyNavigation;
+
+				// Переменная, содержащая ссылку на сам документ (корневой элемент видимой страницы)
+				var $doc = $(document);
+
+				// Записываем ссылку на узел навигации
+				bodyNavigation = $('.content-nav');
+
+				// console.log(bodyNavigation);
+
+				// Записываем позицию относительно вернхнего края страницы
+				var navTopPosition;
+				navTopPosition = bodyNavigation.offset().top;
+				// Регистрируем обработчик на событие скроллирования
+				// Каждый раз, когдастраницы скроллится будет выполняться функция
+				$doc.on('scroll', function (event) {
+					// Получаем значение, на сколько проскроллен документ относительно верха
+					var documentScrolled;
+					documentScrolled = $doc.scrollTop();
+					console.log('scrolling...')
+					// Если документ проскроллировался ниже, чем положение
+					// навигации, добавляем навигации название класса FIXED_NAV_CLASS
+					if (documentScrolled >= navTopPosition) {
+						// Если FIXED_NAV_CLASS класса нет у навигации, добавляем его
+						if ( !bodyNavigation.hasClass(FIXED_NAV_CLASS) ) {
+							bodyNavigation.addClass(FIXED_NAV_CLASS)
+						}
+					} else {
+						if ( bodyNavigation.hasClass(FIXED_NAV_CLASS) ) {
+							bodyNavigation.removeClass(FIXED_NAV_CLASS)
+						}
+					}
+				})
+			});
+		</script>
+	</head>
+	<body>
+	<div class="wrapper">
+		<div class="header">
+			<div class="content-holder header-wrapper">
+			    <img src="img/logo.png" alt="BitTorrent">
+				<ul class="header-nav">
+					<li><a href="">HELP</a>
+					    <ul>
+						  <li><a href="http://www.bittorrent.com/help/faq">FAQs</a></li>
+						  <li><a href="http://www.bittorrent.com/help/guides">Videos & Guides</a></li>
+						  <li><a href="http://www.bittorrent.com/help/manual/">User Manual</a></li>
+					    </ul>
+					</li>
+						  <li><a href="">BLOG</a></li>
+						  <li><a href="">COMMUNITY</a></li>
+					<li><a href="">PRODUCTS</a>
+					    <ul>
+						  <li><a href="http://www.bittorrent.com/bittorrent-free">Free</a></li>
+						  <li><a href="http://www.bittorrent.com/bittorrent-plus">Plus</a></li>
+						  <li><a href="http://www.bittorrent.com/bittorrent-control">Control</a></li>
+						  <li><a href="http://www.bittorrent.com/bittorrent-android">Android</a></li>
+						  <li><a href="http://www.bittorrent.com/bittorrent-remote">Remote</a></li>
+						  <li><a href="http://www.bittorrent.com/devices">Devices</a></li>
+						  <li><a href="http://www.bittorrent.com/sync">Sync</a></li>
+					    </ul>
+					</li>
+					<li><a href="">GET STARTED</a>
+					    <ul>
+						  <li><a href="http://www.bittorrent.com/get-started">BitTorrent</a></li>
+						  <li><a href="http://www.bittorrent.com/sync/get-started">Sync</a></li>
+					    </ul>
+					</li>
+			</div>
+		</div>
+		<div class="banner">
+			<div class="banner-wrapper content-holder">
+				<div class="group">
+					<iframe src="http://www.youtube-nocookie.com/embed/044jIZfnyqQ?modestbranding=1&showinfo=0&autohide=1"></iframe>
+				  <div class="text"><span>Your Data Belongs to You.</span><br>Secure, unlimited file-syncing. No cloud required.
+				  <button class="button">
+					<a href="http://www.bittorrent.com/sync/downloads/complete/os/osx">
+					<span>Get Sync Beta</span><br>Free Download</a>
+				  </button>
+				  </div>
+				</div>
+			</div>
+		</div>
+		<div class="content-nav">
+		<div class="content-holder content-nav-wrapper">
+			<ul>
+				<li><a href="http://www.bittorrent.com/sync">BitTorrent Sync</a></li>
+				<li><a href="http://www.bittorrent.com/sync/get-started">Get Started </a>
+				    <ul>
+				  	  <li><a href="">Windows and Mac</a></li>
+				  	  <li><a href="">Mobile</a></li>
+				    </ul>
+				</li>
+				<li><a href="http://www.bittorrent.com/sync/downloads">Downloads </a></li>
+				<li><a href="http://www.bittorrent.com/sync/developers">Developers</a></li>
+				<li><a href="http://www.bittorrent.com/sync/help/desktop-manual">Help</a></li>
+			</ul>
+		</div>
+		</div>
+		<div class="feature">
+			<div class="content-holder feature-wrapper">
+					<div class="first">
+					    <img src="img/home-your-files-safe.png" alt="">
+						<span>Your information stays yours.</span><br><br>Sync never stores your files on servers, so they stay safe from data breachesbr<br>and prying eyes.
+					</div>
+					<div class="second">
+						<img src="img/home-sync-all-devices.png" alt="">
+						<span>Access your files anywhere.</span><br><br>Create a Sync folder for your stuff. Open it on any computer, phone, or tablet<br> Access docs, share photos, and start working from anywhere.
+					</div>
+					<div class="third">
+						<img src="img/home-laptop-power-on.png">
+						<span>Send and sync, without speed limits.</span><br><br>BitTorrent Sync skips the cloud to deliver your files at lightning speed. No <br> matter where you are.
+					</div>
+					<div class="forth">
+						<img src="img/home-sync-any-size-free.png" alt="">
+						<span>Free for all.</span><br><br>Sync, send and share as much as you want. There are no file size limits,or <br> caps on creativity. It’s as simple as that.
+					</div>	
+		</div>
+		<div class="checkout">
+			<div class="content-holder checkout-wrapper">
+				<h2>Check out Sync for Mobile</h2>
+				<span>Get files from your computer on your phone.</span>
+				<button class="button">Check out Mobile</button>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="content-holder footer-wrapper"></div>
+		</div>
+		</div>
+	</body>
+</html>
